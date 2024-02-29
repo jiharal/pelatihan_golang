@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js"></script>
+
+    <title>Welcome</title>
+</head>
+
+<body>
+    <h2>Welcome!</h2>
+    <p>You are now authenticated.</p>
+    <p>Token: <span id="token"></span></p>
+
+  
+    <script>
+        // Firebase configuration
+      
+
+        // Extract token from the URL and display it
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        document.getElementById('token').innerText = token;
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBYjACocjTbCxRfSHRQqvXQ1GZ2rYXVjJw",
+            authDomain: "tlabdev.firebaseapp.com",
+            projectId: "tlabdev",
+            storageBucket: "tlabdev.appspot.com",
+            messagingSenderId: "391517908412",
+            appId: "1:391517908412:web:4ca4ff2dc3e2e64dc0cfb9",
+            measurementId: "G-SQJ36MLFTE",
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Sign in with custom token
+        firebase.auth().signInWithCustomToken(token)
+            .then((userCredential) => {
+                // User signed in
+                const user = userCredential.user;
+                console.log('User signed in:', user);
+            })
+            .catch((error) => {
+                // Handle errors
+                console.error('Error signing in:', error);
+            });
+    </script>
+</body>
+
+</html>

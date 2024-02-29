@@ -9,6 +9,7 @@ require (
 	github.com/gorilla/sessions v1.2.2
 	github.com/spf13/cobra v1.8.0
 	golang.org/x/oauth2 v0.17.0
+	golang.org/x/tour v0.1.0
 	google.golang.org/api v0.167.0
 )
 
